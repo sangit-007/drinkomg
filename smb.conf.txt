@@ -1,0 +1,65 @@
+#============================ Share Definitions ==============================
+
+[homes]
+        comment = Home Directories
+        browseable = yes
+        writable = yes
+        valid users = %S
+        valid users = MYDOMAIN\%S
+
+[printers]
+        comment = All Printers
+        path = /var/spool/samba
+        browseable = no
+        guest ok = no
+        writable = no
+        printable = yes
+
+# Un-comment the following and create the netlogon directory for Domain Logons:
+;       [netlogon]
+;       comment = Network Logon Service
+;       path = /var/lib/samba/netlogon
+;       guest ok = yes
+;       writable = no
+;       share modes = no
+
+# Un-comment the following to provide a specific roving profile share.
+# The default is to use the user's home directory:
+;       [Profiles]
+;       path = /var/lib/samba/profiles
+;       browseable = no
+;       guest ok = yes
+
+# A publicly accessible directory that is read only, except for users in the
+# "staff" group (which have write permissions):
+;       [public]
+;       comment = Public Stuff
+;       path = /home/samba
+;       public = yes
+;       writable = yes
+;       printable = no
+;       write list = +staff
+[Websites]
+ path = /var/www/websites
+ browseable = yes
+ valid users = @development
+ guest ok = no
+ writable = yes
+ public   = yes
+
+
+
+[global]
+        workgroup = SAMBA
+        security = user
+
+        passdb backend = tdbsam
+
+        printing = cups
+        printcap name = cups
+        load printers = yes
+        cups options = raw
+
+
+
+

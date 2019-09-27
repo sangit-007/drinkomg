@@ -1,0 +1,18 @@
+Command to find Hacked and Malicious script in cpanel website:
+==============================================================
+
+grep -lr "string"
+
+Where "string" is a few characters from the entire encoded file (I don't always use the first "eval" characters, but take 12 to 16 characters out of the middle; less false positives that way)
+
+grep -r 'eval(' /home/*/public_html/*php
+
+find /home/ | xargs grep 'text' -sl
+
+I realized this is a better way to find the string. And its easy as you can get a c99 or any such shell and grab a piece of text from it.
+
+
+https://community.spiceworks.com/how_to/137804-tutorial-how-check-if-your-linux-server-has-been-hack
+http://www.gregfreeman.io/2013/steps-to-take-when-you-know-your-php-site-has-been-hacked/
+http://www.webhostingtalk.com/showthread.php?t=1282636
+
